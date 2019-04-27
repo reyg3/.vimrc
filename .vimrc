@@ -60,6 +60,9 @@ set wildmenu
 " use ^t to jump back though the tag stack
 command! MakeTags !ctags -R .
 
+" set tags file location
+set tags=./tags,tags;$HOME
+
 
 """ FILE BROWSING:
 
