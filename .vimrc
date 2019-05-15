@@ -18,7 +18,7 @@ set nu rnu
 " set color scheme
 color desert
 
-" allow mouse to change cursor position
+" allow mouse to change word position
 set mouse=a
 
 " set tab length
@@ -87,4 +87,6 @@ nmap <silent> <NL> t :rightbelow 40vs<CR>:e .<CR>:wincmd h<CR>
 
 
 """ SKELETON SNIPPETS:
+
+nnoremap ,html :-1read $HOME/.vim/.skeleton.html<CR>3jwf>a
 
