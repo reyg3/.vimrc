@@ -19,7 +19,9 @@ set nu rnu
 color desert
 
 " allow mouse to change word position
-set mouse=a
+if has('mouse')
+    set mouse=a
+endif
 
 " set tab length
 set tabstop=4
