@@ -18,7 +18,7 @@ set nu rnu
 " set color scheme
 color desert
 
-" allow mouse to change word position
+" allow mouse to change word position if detected
 if has('mouse')
     set mouse=a
 endif
@@ -29,7 +29,25 @@ set softtabstop=4
 set shiftwidth=4
 set noexpandtab
 
-" highlight column 80
+" autoclose variations
+inoremap " ""<left>
+inoremap ' ''<left>
+inoremap ( ()<left>
+inoremap [ []<left>
+inoremap { {}<left>
+inoremap {<cr> {<cr>}<C-o>O<tab>
+inoremap {;<cr> {<cr>};<esc>O<tab>
+
+" detect matching pairs of autoclose variations above and skip them when typed
+inoremap <expr> ) strpart(getline('.'), col('.')-1, 1) == ")" ? "\<Right>" : ")"
+inoremap <expr> ] strpart(getline('.'), col('.')-1, 1) == "]" ? "\<Right>" : "]"
+inoremap <expr> } strpart(getline('.'), col('.')-1, 1) == "}" ? "\<Right>" : "}"
+
+" single and double quote versions of the above
+inoremap <expr> ' strpart(getline('.'), col('.')-1, 1) == "\'" ? "\<Right>" : "\'\'\<Left>"
+inoremap <expr> " strpart(getline('.'), col('.')-1, 1) == "\"" ? "\<Right>" : "\"\"\<Left>"
+
+" highlight column 80 (color changes based on current theme)
 set colorcolumn=80
 highlight ColorColumn ctermbg=darkgray
 
